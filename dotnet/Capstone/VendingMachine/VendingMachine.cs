@@ -7,47 +7,35 @@ namespace Capstone.VendingMachine
     public class VendingMachine
     {
         #region Properties
+        // Inventory - string: product name : int: # of product in vend. mach.
         public Dictionary<string, int> Inventory { get; private set; } = new Dictionary<string, int>();
 
-        public decimal Balance { get; set; }
+        //public decimal Balance { get; set; }
         //public string Logger { get; set; }
 
-        public Dictionary<string, string> UserInterface { get; private set; } = new Dictionary<string, string>();
+        //do we need userinterface anymore?
+        //public Dictionary<string, string> UserInterface { get; private set; } = new Dictionary<string, string>();
 
         #endregion
 
         #region Constructors
-        public VendingMachine(Dictionary<string, int> inventory, decimal balance, Dictionary<string, string> UserInterface)
+        public VendingMachine(Dictionary<string, int> inventory)
         {
-
-
-
-
+            Inventory = inventory;
         }
-        
+
         #endregion
 
         #region Methods
-        public void DisplayInterface ()
+        public void VendingMachineStocker()
         {
-            for (int i = 0; i < )
-            Console.WriteLine(");
-
-
+            FileHandler fileHandler = new FileHandler();
+            fileHandler.FileReader();
         }
-
         public void RunVendingMachine()
         {
-            Console.WriteLine("Hello! Please select an option: ");
-
-
-            string interfaceInput = Console.ReadLine();
-            
-            DisplayInterface(interfaceInput);
-
-
-
-
+            Menu.Display();
+            //VendingMachine.PurchaseStuff();
         }
 
 

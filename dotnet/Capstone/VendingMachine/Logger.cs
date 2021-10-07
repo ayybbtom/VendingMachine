@@ -28,23 +28,23 @@ namespace Capstone
         {
             // generate singleLogEntry given parameters on Balance from call in Vending Machine
             // Write generated single line log entry into log array
-            string singleLogEntry = ($"{date} {datelong} {moneyBefore} {moneyAfter}");
+            //string singleLogEntry = ($"{date} {datelong} {moneyBefore} {moneyAfter}");
         }
-        public void WriteLogToFile()
-        {
-            //write entire log array into a file at designated output directory 
-            try
-            {
-                using (StreamWriter sw = new StreamWriter("Log.txt", true))
-                {
-                    sw.WriteLine(//whole log array//);
-                }
-            }
-            catch (IOException l)
-            {
-                Console.WriteLine(l.ToString());
-            }
-        }
+        //public void WriteLogToFile()
+        //{
+        //    //write entire log array into a file at designated output directory 
+        //    try
+        //    {
+        //        using (StreamWriter sw = new StreamWriter("Log.txt", true))
+        //        {
+        //            sw.WriteLine(//whole log array//);
+        //        }
+        //    }
+        //    catch (IOException l)
+        //    {
+        //        Console.WriteLine(l.ToString());
+        //    }
+        //}
 
 
 
