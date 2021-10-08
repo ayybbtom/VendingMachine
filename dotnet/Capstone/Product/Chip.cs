@@ -6,9 +6,9 @@ namespace Capstone
 {
     public class Chip : Product
     {
-        public Chip(string sound, decimal price, string name, string slotLocation) : base(sound, price, name, slotLocation)
+        public Chip(decimal price, string name, string slotLocation) : base("Crunch Crunch, Yum!", price, name, slotLocation)
         {
-            Sound = "Crunch Crunch, Yum!";
+            
         }
 
 

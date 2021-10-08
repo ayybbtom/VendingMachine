@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Capstone.VendingMachine
 {
-    
+
     public class VendingMachine
     {
         #region Properties
 
         // Inventory - string: product name : int: # of product in vend. mach.
-        public Dictionary<T (where T:Product) , int> Inventory { get; private set; } = new Dictionary<T (where T:Product), int>();
+        public Dictionary<Product, int> Inventory { get; private set; } = new Dictionary<Product, int>();
 
         //public decimal Balance { get; set; }
         //public string Logger { get; set; }
@@ -21,6 +20,10 @@ namespace Capstone.VendingMachine
         #endregion
 
         #region Constructors
+        public VendingMachine()
+        {
+        }
+
         public VendingMachine(Dictionary<string, int> inventory)
         {
             Inventory = inventory;
@@ -29,27 +32,18 @@ namespace Capstone.VendingMachine
         #endregion
 
         #region Methods
-        public void VendingMachineStocker()
+        public VendingMachine VendingMachineStocker()
         {
             FileHandler fileHandler = new FileHandler();
-            fileHandler.FileReader();
+            fileHandler.InventoryStocker();
         }
         public void RunVendingMachine()
         {
             Menu.Display();
             //VendingMachine.PurchaseStuff();
         }
-        public AllVendingItems()
-        {
-            vmAllItems = FileHandler.LocationOfList/Dictionary();
-        } 
-        public void DisplayAllItems()
-    {
-        //once file 
-    }
-
-        #endregion
-
+        public void DisplayAllInventory() { }
 
     }
 }
+        #endregion
