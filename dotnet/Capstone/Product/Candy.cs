@@ -9,8 +9,5 @@ namespace Capstone
         public Candy(decimal price, string name, string slotLocation) : base("Munch Munch, Yum", price, name, slotLocation)
         {
         }
-
-
-
     }
 }

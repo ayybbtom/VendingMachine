@@ -3,10 +3,11 @@ using System.Collections.Generic;
 
 namespace Capstone.VendingMachine
 {
-    public static class Menu
+    public class Menu
     {
-        public static void Display()
+        public object Display()
         {
+            VendingMachine vm = new VendingMachine();
 
             while (true)
             {
@@ -22,14 +23,12 @@ namespace Capstone.VendingMachine
                 if (input == "1")
                 {
                     Console.WriteLine("Vending machine stock displayed below. Hit Enter to return to the main menu.");
-                    VendingMachine.AllVendingItems();
+                    vm.DisplayAllInventory();
                     Console.WriteLine();
-
                 }
                 else if(input == "2")
                 {
-                    PurchaseMenu purchaseMenu = new PurchaseMenu();
-                    purchaseMenu.Show();
+                    PurchaseMenu.PurchaseDisplay();
 
                 }
                 else if(input == "3")
