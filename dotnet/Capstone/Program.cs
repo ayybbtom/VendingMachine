@@ -7,6 +7,7 @@ namespace Capstone.VendingMachine
     {
         static void Main(string[] args)
         {
+            SalesReport.WriteCheckSalesReport();
             Console.WriteLine("Hello World!");
             
             FileHandler fileHandler = new FileHandler();

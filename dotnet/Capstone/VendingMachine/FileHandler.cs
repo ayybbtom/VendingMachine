@@ -35,6 +35,7 @@ namespace Capstone.VendingMachine
 
         }
 
+
         //public static void FileWriter(string filepath)
         //{      
         //    // taken from Logger - will need to generalize for use in Sales Report & for Logging
