@@ -6,7 +6,7 @@ namespace Capstone.VendingMachine
 {
     public class Money
     {
-        public decimal CurrentBalance { get; private set; } = 0.00M;
+        public decimal CurrentBalance { get; private set; } //= 0.00M;
 
         public void MakeChange()
         {
@@ -15,6 +15,18 @@ namespace Capstone.VendingMachine
             decimal quarters = 0.25m;
             decimal dimes = 0.10m;
             decimal nickels = 0.05m;
+
+            decimal amountToBreak = CurrentBalance;
+
+            while (amountToBreak > 0)
+            {
+                switch (amountToBreak)
+                {
+                    case int n when n
+
+                }
+                amountToBreak -= COIN
+            }
         }
 
         public void FeedMoney(decimal inputBill)
@@ -22,16 +34,25 @@ namespace Capstone.VendingMachine
             // only accepts $1, 2, 5, 10 bills
             // get currentbalance
             // set to currbal + inputbill
-            // return updated currbal
+            // sets updated currbal
+
+            switch (inputBill)
+            {
+            CurrentBalance += inputBill;
+
+
+            }
         }
 
-        public bool CheckAvailableFunds(decimal priceCheck)
+        public bool CheckAvailableFunds(string priceCheck)
         {
+            
             //helper method - called to prevent "muddying up" other method bodies
             //returns True if Balance >= priceCheck
             //returns False if Balance < priceCheck
             return false;
         }
 
+        
     }
 }

@@ -23,7 +23,7 @@ namespace Capstone.VendingMachine
 
             Dictionary<string, string> salesReport = new Dictionary<string, string>();
             var lines = File.ReadAllLines(inputFile);
-
+                                                                      
 
             if (!File.Exists(createOutputFile))
             {

@@ -26,9 +26,16 @@ namespace Capstone
         }
         public void GenerateLogEntry()
         {
-            // generate singleLogEntry given parameters on Balance from call in Vending Machine
-            // Write generated single line log entry into log array
+            // "01/01/2016 12:00:00 PM FEED MONEY: $5.00 $5.00"
             //string singleLogEntry = ($"{date} {datelong} {moneyBefore} {moneyAfter}");
+            string singleLogEntry = "";
+
+
+
+            FileHandler.LogWriter(TotalSessionLog);
+            // generate singleLogEntry given parameters on Balance from call in Vending Machine
+            // Write generated single line log entry into log array TotalSessionLog
+            // return TotalSessionLog to FileHandler method WriteLogFile(input)
         }
         //public void WriteLogToFile()
         //{
