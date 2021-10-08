@@ -24,17 +24,13 @@ namespace Capstone.VendingMachine
         {
         }
 
-        public VendingMachine(Dictionary<string, int> inventory)
-        {
-            Inventory = inventory;
-        }
 
         #endregion
 
         #region Methods
-        public VendingMachine VendingMachineStocker()
+        public void VendingMachineStocker()
         {
-            VendingMachine vendingMachine = FileHandler.InventoryStocker();
+            FileHandler.InventoryStocker();
         }
         public void RunVendingMachine()
         {
