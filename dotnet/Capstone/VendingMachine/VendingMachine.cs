@@ -10,7 +10,7 @@ namespace Capstone.VendingMachine
         #region Properties
 
         // Inventory - string: product name : int: # of product in vend. mach.
-        public Dictionary<T (where T:Product) , int> Inventory { get; private set; } = new Dictionary<T (where T:Product), int>();
+        public Dictionary<Product, int> Inventory { get; private set; } = new Dictionary<Product, int>();
 
         //public decimal Balance { get; set; }
         //public string Logger { get; set; }
@@ -31,8 +31,7 @@ namespace Capstone.VendingMachine
         #region Methods
         public void VendingMachineStocker()
         {
-            FileHandler fileHandler = new FileHandler();
-            fileHandler.FileReader();
+            VendingMachine vendingMachine = FileHandler.InventoryStocker();
         }
         public void RunVendingMachine()
         {
