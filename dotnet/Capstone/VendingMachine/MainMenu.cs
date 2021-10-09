@@ -5,10 +5,10 @@ namespace Capstone.VendingMachine
 {
     public class Menu
     {
+        public VendingMachine vm;
+        public PurchaseMenu pm;
         public object Display()
         {
-            VendingMachine vm = new VendingMachine();
-
             while (true)
             {
                 Console.WriteLine("Please select an option: ");
@@ -28,7 +28,7 @@ namespace Capstone.VendingMachine
                 }
                 else if(input == "2")
                 {
-                    PurchaseMenu.PurchaseDisplay();
+                    pm.PurchaseDisplay();
 
                 }
                 else if(input == "3")

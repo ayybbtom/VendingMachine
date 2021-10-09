@@ -9,7 +9,7 @@ namespace Capstone
         public Gum(decimal price, string name, string slotLocation) : base("Chew Chew, Yum!", price, name, slotLocation)
         {
         }
-        m
+        
 
 
     }

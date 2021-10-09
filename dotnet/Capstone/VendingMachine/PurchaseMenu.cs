@@ -53,7 +53,7 @@ namespace Capstone.VendingMachine
 
                             //call kvp contains name of item, instance of class product. 
 
-                            if (vm.ItemExists(choice) && vm.retrieveitem(choice))
+                            if (vm. && vm.retrieveitem(choice))
                             {
                                 Console.WriteLine($"Enjoy your {choice},{Product. ");
                             }
