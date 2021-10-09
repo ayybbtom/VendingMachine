@@ -65,13 +65,13 @@ namespace Capstone.VendingMachine
             CurrentBalance += inputBill;
 
             }
-        public static bool PerformPriceCheck(decimal itemPrice)
+        public bool PerformPriceCheck(decimal itemPrice)
         {
             //helper method - called to prevent "muddying up" other method bodies
             //returns True if Balance >= priceCheck
             //returns False if Balance < priceCheck
 
-            if (itemPrice >= CurrentBalance(itemPrice))
+            if (itemPrice <= this.CurrentBalance)
             {
                 return true;
             }
@@ -82,10 +82,10 @@ namespace Capstone.VendingMachine
         }
         
     
-        public static void RemoveMoney(decimal amountToRemove)
+        public void RemoveMoney(decimal amountToRemove)
         {
 
-            CurrentBalance -= amountToRemove;
+            this.CurrentBalance -= amountToRemove;
             
         }
     }

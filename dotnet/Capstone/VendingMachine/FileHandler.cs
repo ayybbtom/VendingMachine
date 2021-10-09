@@ -33,7 +33,7 @@ namespace Capstone.VendingMachine
         }
 
 
-        public static void InventoryStocker(VendingMachine vendingMachine)
+        public static void StockVendingMachineInventory(VendingMachine vendingMachine)
         {
             //Takes input from Filereader and converts it to correct format to feed into VendingMachine
             //INPUT - A1|Potato Crisps|3.05|Chip - INPUT
@@ -48,7 +48,6 @@ namespace Capstone.VendingMachine
             Queue<string> inventoryToUnpack = FileReader(@"C:\Users\Student\workspace\orange-mod1-capstone-team2\dotnet\vendingmachine.csv");
             string[] unpackedProduct = new string[4];
             const int InitialStockCount = 5;
-            VendingMachine vendingMachine = new VendingMachine();
 
             foreach (string product in inventoryToUnpack)
             {
@@ -80,32 +79,31 @@ namespace Capstone.VendingMachine
         public static void LogWriter(Queue<string> totalSessionLog)
         {
             // use this method to format log files - might be able to completely get rid of FileWriter method and replace it w/ LogWriter & SalesReportWriter
-            foreach (string log in TotalSessionLog)
-            {
-                //no need dequeue method - foreach handles "unloading of logs" from TotalSessionLog
-                //try
-                //    {
-                //        using (StreamWriter sw = new StreamWriter("Log.txt", true))
-                //        {
-                //            sw.WriteLine(//whole log array//);
-                //        }
-                //    }
-                //    catch (IOException l)
-                //    {
-                //        Console.WriteLine(l.ToString());
-                //    }
-            }
+            //foreach (string log in TotalSessionLog)
+            //{
+            //no need dequeue method - foreach handles "unloading of logs" from TotalSessionLog
+            //try
+            //    {
+            //        using (StreamWriter sw = new StreamWriter("Log.txt", true))
+            //        {
+            //            sw.WriteLine(//whole log array//);
+            //        }
+            //    }
+            //    catch (IOException l)
+            //    {
+            //        Console.WriteLine(l.ToString());
+            //    }
         }
-        public static void SalesReportWriter()
-        {
-            // use this method to format sales report files - might be able to completely get rid of FileWriter method and replace it w/ LogWriter & SalesReportWriter
-        }
-
-
-
-
-
-
-
     }
+    //public static void SalesReportWriter()
+    //{
+    // use this method to format sales report files - might be able to completely get rid of FileWriter method and replace it w/ LogWriter & SalesReportWriter
+    //}
+
+
+
+
+
+
+
 }

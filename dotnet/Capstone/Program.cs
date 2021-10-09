@@ -7,15 +7,24 @@ namespace Capstone.VendingMachine
     {
         static void Main(string[] args)
         {
-            SalesReport.WriteCheckSalesReport();
+            //SalesReport.WriteCheckSalesReport();
             Console.WriteLine("Hello World!");
-            
-            FileHandler fileHandler = new FileHandler();
-            Queue<string> files = fileHandler.FileReader();
-            foreach (string line in files)
+            VendingMachine vendingMachine = new VendingMachine();
+            vendingMachine.StockVendingMachine(vendingMachine);
+
+            foreach(KeyValuePair<Product, int> inventory in vendingMachine.Inventory)
             {
-                Console.WriteLine(line);
+                Console.WriteLine($"Item: {inventory.Key.Name} with count: {inventory.Value}");
+                Console.WriteLine($"Item is located in {inventory.Key.SlotLocation} and costs: {inventory.Key.Price}");
             }
+
+
+            //FileHandler fileHandler = new FileHandler();
+            //Queue<string> files = fileHandler.FileReader();
+            ////foreach (string line in files)
+            //{
+            //    Console.WriteLine(line);
+            //}
 
 
         }

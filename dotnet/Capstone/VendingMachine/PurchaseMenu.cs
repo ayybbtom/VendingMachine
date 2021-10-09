@@ -8,6 +8,8 @@ namespace Capstone.VendingMachine
         public VendingMachine vm;
         public void PurchaseDisplay()
         {
+            // idea: substitute "true" for sentinel variable
+            // flip when option 4 is chosen (from true -> false)
             while (true)
             {
                 Console.Clear();
@@ -18,7 +20,7 @@ namespace Capstone.VendingMachine
                 Console.WriteLine("(3) Finish Transaction");
                 Console.WriteLine("(4) Exit ");
 
-                string input = Console.ReadLine(); 
+                string input = Console.ReadLine();
                 decimal inputToDec;
                 while (true)
                 {
@@ -49,53 +51,54 @@ namespace Capstone.VendingMachine
 
                     //call kvp contains name of item, instance of class product. 
 
-                    else if (input == "2")
-                    {
-                        while (true)
-                        {
-                            vm.DisplayAllInventory();
-                            Console.WriteLine();
-                            Console.WriteLine("Please select an item: ");
-                            
-                            string choice = Console.ReadLine();                               
+                    //    else if (input == "2")
+                    //    {
+                    //        while (true)
+                    //        {
+                    //            vm.DisplayAllInventory();
+                    //            Console.WriteLine();
+                    //            Console.WriteLine("Please select an item: ");
 
-                            if (vm.IfItemExists(choice) && vm.GetItem(choice))
-                            {
-                                Console.WriteLine($"{vm.Inventory[choice].itemName} {vm.Inventory[choice].SoundItMakesWhenWeNomNomNom}");
-                                break;
+                    //            string choice = Console.ReadLine();                               
 
-                            else if (!vm.IfItemExists(choice))
-                                {
-                                    Console.WriteLine("Please select another item");
-                                    
-                                }
-                            else if (vm.IfItemExists(choice) && (vm.Inventory.ContainsValue = 0)) ;
-                            {
-                                Console.WriteLine($"{vm.Inventory[choice]} is sold out");
-                                    
-                            }
-                            else if (money.CurrentBalance < vm.Inventory[choice].itemPrice)
-                            {
-                                Console.WriteLine($"Not enough Money.");
-                                    break;
-                            }
+                    //            if (vm.IfItemExists(choice) && vm.GetItem(choice))
+                    //            {
+                    //                Console.WriteLine($"{vm.Inventory[choice].itemName} {vm.Inventory[choice].SoundItMakesWhenWeNomNomNom}");
+                    //                break;
 
-                            }
-                        }
-                    }
-                    else if (input == "3")
-                    {
-                        Console.WriteLine("Transaction finished.");
-                        Console.WriteLine(money.MakeChange());
-                    }
-                    else if (input == "4")
-                    {
-                        Console.WriteLine("Exiting to Main Menu");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Not valid option. Please try again");
-                    }
+                    //            else if (!vm.IfItemExists(choice))
+                    //                {
+                    //                    Console.WriteLine("Please select another item");
+
+                    //                }
+                    //            else if (vm.IfItemExists(choice) && (vm.Inventory.ContainsValue = 0)) ;
+                    //            {
+                    //                Console.WriteLine($"{vm.Inventory[choice]} is sold out");
+
+                    //            }
+                    //            else if (money.CurrentBalance < vm.Inventory[choice].itemPrice)
+                    //            {
+                    //                Console.WriteLine($"Not enough Money.");
+                    //                    break;
+                    //            }
+
+                    //            }
+                    //        }
+                    //    }
+                    //    else if (input == "3")
+                    //    {
+                    //        Console.WriteLine("Transaction finished.");
+                    //        Console.WriteLine(money.MakeChange());
+                    //    }
+                    //    else if (input == "4")
+                    //    {
+                    //        Console.WriteLine("Exiting to Main Menu");
+                    //    }
+                    //    else
+                    //    {
+                    //        Console.WriteLine("Not valid option. Please try again");
+                    //    }
+                    //}
                 }
             }
         }
