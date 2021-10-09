@@ -57,9 +57,9 @@ namespace Capstone.VendingMachine
                 string location = unpackedProduct[0].ToString();
                 string name = unpackedProduct[1].ToString();
                 decimal price = decimal.Parse(unpackedProduct[2]);
-                string type = unpackedProduct[3].ToString();
+                string productType = unpackedProduct[3].ToString();
 
-                switch (type)
+                switch (productType)
                 {
                     case "Candy":
                         vendingMachine.Inventory.Add(new Candy(price, name, location), InitialStockCount);
