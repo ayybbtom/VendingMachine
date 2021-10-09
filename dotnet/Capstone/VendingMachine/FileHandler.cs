@@ -33,7 +33,7 @@ namespace Capstone.VendingMachine
         }
 
 
-        public static VendingMachine InventoryStocker()
+        public static void InventoryStocker(VendingMachine vendingMachine)
         {
             //Takes input from Filereader and converts it to correct format to feed into VendingMachine
             //INPUT - A1|Potato Crisps|3.05|Chip - INPUT
@@ -74,28 +74,8 @@ namespace Capstone.VendingMachine
                         vendingMachine.Inventory.Add(new Gum(price, name, location), InitialStockCount);
                         continue;
                 }
-
             }
-            return vendingMachine;
         }
-
-        //public static void FileWriter(string filepath)
-        //{      
-        //    // taken from Logger - will need to generalize for use in Sales Report & for Logging
-        //    // will need to delete from Logger
-        //    try
-        //    {
-        //        using (StreamWriter sw = new StreamWriter("Log.txt", true))
-        //        {
-        //            sw.WriteLine(//whole log array//);
-        //        }
-        //    }
-        //    catch (IOException l)
-        //    {
-        //        Console.WriteLine(l.ToString());
-        //    }
-
-        //}
 
         public static void LogWriter(Queue<string> totalSessionLog)
         {

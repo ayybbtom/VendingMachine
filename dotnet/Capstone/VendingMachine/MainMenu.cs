@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace Capstone.VendingMachine
 {
-    public class Menu
+    public static class MainMenu
     {
         public VendingMachine vm;
         public PurchaseMenu pm;
-        public object Display()
+        public static void Display()
         {
             while (true)
             {
