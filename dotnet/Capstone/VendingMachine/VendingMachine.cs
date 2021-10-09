@@ -37,7 +37,7 @@ namespace Capstone.VendingMachine
         }
         public void RunVendingMachine()
         {
-            Menu.Display();
+            MainMenu.Display();
             //VendingMachine.PurchaseStuff();
         }
         //display vending: item #, stock, name, price
@@ -61,10 +61,32 @@ namespace Capstone.VendingMachine
             }
         }
         //trying to get this to work below for this to be true to use in SubMenu option 2.
+
+
+        //string 'Q4' input x
+        //check it against vendingMachine.Inventory.keys().
+        //foreach vendingMachine.Inventory.Keys()
+        //    {
+        //    if (Key.slotLocation == string input)
+        //        {
+        //        if true, item does exist
+        //          once truth is determined, go to
+        //          vendingMachine.Inventory[key] = value*
+        //          we want this value*, this will be amt 
+        //          of item that is in stock in the machine
+        //          
+        //
+
         public bool IfItemExists(string itemNumber)
         {
-            return Inventory.ContainsKey(itemNumber);
+            foreach (Product vendingItem in vendingMachine.Inventory.)
             
+            
+            
+            
+            return vendingMachine.Inventory.(item);
+
+
         }
         // this GetItem will first check if: item exists, money is >= machine current money, and if itemStock > 0
         // call money.methods here: current blanace, balance after

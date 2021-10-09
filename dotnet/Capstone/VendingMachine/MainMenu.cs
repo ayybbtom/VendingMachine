@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Capstone.VendingMachine
 {
-    public class Menu
+    public class MainMenu
     {
         public VendingMachine vm;
         public PurchaseMenu pm;

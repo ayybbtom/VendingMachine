@@ -12,19 +12,26 @@ namespace Capstone.VendingMachine
         {
             // per readme
             //The customer's money is returned using nickels, dimes, and quarters (using the smallest amount of coins possible).
-            decimal quarters = 0.25m;
-            decimal dimes = 0.10m;
-            decimal nickels = 0.05m;
+            decimal quarterValue = 0.25m;
+            decimal dimeValue = 0.10m;
+            decimal nickelValue = 0.05m;
+
+            int numQuarters = 0;
+            int numDimes = 0;
+            int numNickels = 0;
+
 
             decimal amountToBreak = CurrentBalance;
 
             while (amountToBreak > 0)
             {
-                switch (amountToBreak)
+                if ( (amountToBreak / quarterValue >= 1) )
                 {
-                    case int n when n
 
                 }
+                else if (amountToBreak / dimeValue> 0)
+
+
                 amountToBreak -= COIN
             }
         }
@@ -42,15 +49,15 @@ namespace Capstone.VendingMachine
 
 
             }
-        }
-
-        public bool CheckAvailableFunds(string priceCheck)
+        public static bool CheckAvailableFunds(string priceCheck)
         {
             
             //helper method - called to prevent "muddying up" other method bodies
             //returns True if Balance >= priceCheck
             //returns False if Balance < priceCheck
             return false;
+        }
+
         }
 
         
