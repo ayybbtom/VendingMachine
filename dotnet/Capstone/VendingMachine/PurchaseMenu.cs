@@ -37,6 +37,18 @@ namespace Capstone.VendingMachine
                             Console.WriteLine("Please enter a whole dollar amount.");
                         }
                     }
+
+                    //
+                    //      else if (input == "2)
+                    //
+                    // 1 make sure item input is valid (Input matches slotLocation of a real item)
+                    // 2 find item in vm.Inventory (using slotLocation, get name of item. use that to search vm.Inventory)
+                    // 3 in vm.Inventory[item], check quantity (the value part of key-value pair)
+                    // 4 if qty > 0, && balance > item.price -> allow sale to take place
+                    // 5 sale: -1 to quantity, -price from balance
+
+                    //call kvp contains name of item, instance of class product. 
+
                     else if (input == "2")
                     {
                         while (true)
@@ -44,20 +56,45 @@ namespace Capstone.VendingMachine
                             vm.DisplayAllInventory();
                             Console.WriteLine();
                             Console.WriteLine("Please select an item: ");
-                            string choice = Console.ReadLine();    
-                            // 1 make sure item input is valid (Input matches slotLocation of a real item)
-                            // 2 find item in vm.Inventory (using slotLocation, get name of item. use that to search vm.Inventory)
-                            // 3 in vm.Inventory[item], check quantity (the value part of key-value pair)
-                            // 4 if qty > 0, && balance > item.price -> allow sale to take place
-                            // 5 sale: -1 to quantity, -price from balance
+                            
+                            string choice = Console.ReadLine();                               
 
-                            //call kvp contains name of item, instance of class product. 
-
-                            if (vm. && vm.retrieveitem(choice))
+                            if (vm.IfItemExists(choice) && vm.GetItem(choice))
                             {
-                                Console.WriteLine($"Enjoy your {choice},{Product. ");
+                                Console.WriteLine($"{vm.Inventory[choice].itemName} {vm.Inventory[choice].SoundItMakesWhenWeNomNomNom}");
+                                break;
+
+                            else if (!vm.IfItemExists(choice))
+                                {
+                                    Console.WriteLine("Please select another item");
+                                    
+                                }
+                            else if (vm.IfItemExists(choice) && (vm.Inventory.ContainsValue = 0)) ;
+                            {
+                                Console.WriteLine($"{vm.Inventory[choice]} is sold out");
+                                    
+                            }
+                            else if (money.CurrentBalance < vm.Inventory[choice].itemPrice)
+                            {
+                                Console.WriteLine($"Not enough Money.");
+                                    break;
+                            }
+
                             }
                         }
+                    }
+                    else if (input == "3")
+                    {
+                        Console.WriteLine("Transaction finished.");
+                        Console.WriteLine(money.MakeChange());
+                    }
+                    else if (input == "4")
+                    {
+                        Console.WriteLine("Exiting to Main Menu");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Not valid option. Please try again");
                     }
                 }
             }

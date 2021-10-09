@@ -25,14 +25,21 @@ namespace Capstone.VendingMachine
         #region Methods
         public void VendingMachineStocker()
         {
+            //Machine startup process
+            // Instantiates vending machine & money
+            
+            VendingMachine vendingMachine = new VendingMachine();
+            FileHandler.InventoryStocker(vendingMachine);
+            Money money = new Money();
 
             Console.WriteLine();
-            foreach (KeyValuePair<Product, int> answers in vendingMachine.Inventory)
-            {
-                Console.WriteLine(answers.Value);
-                
-            }
+            //foreach (KeyValuePair<Product, int> answers in vendingMachine.Inventory)
+            //{
+            //    Console.WriteLine(answers.Value);
 
+            //}
+            // also sets balance to 0 here
+            
 
         }
         public void RunVendingMachine()
@@ -62,7 +69,6 @@ namespace Capstone.VendingMachine
         }
         //trying to get this to work below for this to be true to use in SubMenu option 2.
 
-
         //string 'Q4' input x
         //check it against vendingMachine.Inventory.keys().
         //foreach vendingMachine.Inventory.Keys()
@@ -77,22 +83,75 @@ namespace Capstone.VendingMachine
         //          
         //
 
+        public Product GetVendingItem(string itemNumber)
+        {
+            foreach (KeyValuePair<Product, int> vendingItem in vendingMachine.Inventory)
+            {
+                Product workingKey = vendingItem.Key;
+                if (workingKey.SlotLocation == itemNumber)
+                {
+                    return true;
+                }
+            }
+        }
+
         public bool IfItemExists(string itemNumber)
         {
-            foreach (Product vendingItem in vendingMachine.Inventory.)
-            
-            
-            
-            
-            return vendingMachine.Inventory.(item);
+            foreach (KeyValuePair<Product, int> vendingItem in vendingMachine.Inventory)
+            {
+                Product workingKey = vendingItem.Key;
+                if (workingKey.SlotLocation == itemNumber)
+                {
+                    return true;
+                }
+            }
 
-
+            return false;
         }
+
         // this GetItem will first check if: item exists, money is >= machine current money, and if itemStock > 0
         // call money.methods here: current blanace, balance after
         // call log to write transaction
         public bool GetItem(string itemNumber)
+        {
+            if (vendingMachine.IfItemExists(itemNumber) 
+                && Money.PerformPriceCheck(itemNumber) >= Inventory.ContainsKey[itemPrice]
+                && Inventory.ContainsValue > 0
+                && vendingMachine[itemNumber].GetItem()
+            {
+                string message = ($"{Inventory.ContainsKey[itemNumber].itemPrice}");
+                decimal moneyBefore = Money.PerformPriceCheck;
 
-    }
+                Money.RemoveMoney(vendingMachine[itemNumber].itemPrice);
+
+                decimal moneyAfter = Money.PerformPriceCheck;
+                Logger.MethodToLogHere(DateTime.UtcNow, message, moneyBefore, moneyAfter);
+
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+    }   // if: item exists, AND money is >= itemPrice AND >0 itemstock 
+       // stirng message = (log $"datetime, action = "Itemname slotLocation", BalanceBeforeTransacation, BalanceAfterTransaction)
+       // decimal moneybefore = money before
+       // removemoney(vendingmachine.Inventory[itemNumber].price)
+       // decimal moneyafter = money after
+       // log(message, moneybefore, moneyafter)
+       // return true;
+       // else return false;
+
+        if (Money.CheckAvailableFunds(price))
+        {
+        Money.RemoveMoney(price);
+        //buy item - update inventory
+        }
+        else
+        {
+        Console.WriteLine("Sorry - you don't have enough money for that item.")
+        }
 }
 #endregion
