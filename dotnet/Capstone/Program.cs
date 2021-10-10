@@ -10,10 +10,12 @@ namespace Capstone.VendingMachine
             //SalesReport.WriteCheckSalesReport();
             Console.WriteLine("Hello World!");
             Money money = new Money();
-            VendingMachine vendingMachine = new VendingMachine(money);
+            Queue<string> totalSessionLog = new Queue<string>();
+            Logger logger = new Logger(totalSessionLog);
+            VendingMachine vendingMachine = new VendingMachine(money, logger);
 
             vendingMachine.StockVendingMachine(vendingMachine);
-            MainMenu.Display(vendingMachine, money);
+            MainMenu.Display(vendingMachine, money, logger);
 
 
             //foreach (KeyValuePair<Product, int> inventory in vendingMachine.Inventory)

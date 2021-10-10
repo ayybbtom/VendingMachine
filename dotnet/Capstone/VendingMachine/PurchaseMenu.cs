@@ -4,7 +4,7 @@ namespace Capstone.VendingMachine
 {
     public static class PurchaseMenu
     {
-        public static void PurchaseDisplay(VendingMachine vendingMachine, Money money)
+        public static void PurchaseDisplay(VendingMachine vendingMachine, Money money, Logger logger)
         {
             // idea: substitute "true" for sentinel variable
             // flip when option 4 is chosen (from true -> false)
@@ -29,18 +29,20 @@ namespace Capstone.VendingMachine
                 {
                     if (mainPurchaseMenuInput == "1")
                     {
+                        Console.WriteLine($"{money.CurrentBalance.ToString("C")} + Current Money Provided");
                         Console.WriteLine("Amounts to enter: 1, 2, 5, 10.");
                         string feedMoneyInput = Console.ReadLine();
 
                         if (feedMoneyInput == ("1") || feedMoneyInput == ("2") || feedMoneyInput == ("5") || feedMoneyInput == ("10"))
                         {
-                            money.FeedMoney(decimal.Parse(feedMoneyInput));
+                            money.FeedMoney(decimal.Parse(feedMoneyInput), money, logger);
+                            break;
                         }
                         else
                         {
-                            Console.WriteLine("Please enter a whole dollar amount.");
+                            Console.WriteLine("Please enter a whole dollar amount.\n");
                         }
-                        break;
+                        //break;
                     }
 
                     else if (mainPurchaseMenuInput == "2")
@@ -59,31 +61,37 @@ namespace Capstone.VendingMachine
                             {
                                 if (vendingMachine.Inventory[choiceInVM] == 0)
                                 {
-                                    Console.WriteLine($"{choiceInVM.Name} is sold out");
+                                    Console.WriteLine($"{choiceInVM.Name} is sold out. Please select another item.");
+                                    Console.ReadLine();
                                     break;
                                 }
                                 else if (!money.PerformPriceCheck(choiceInVM.Price))
                                 {
                                     Console.WriteLine($"Not enough Money for {choiceInVM.Name}.");
                                     Console.WriteLine("Please insert additional funds.\n");
-                                    PurchaseDisplay(vendingMachine, money);
+                                    Console.ReadLine();
+                                    PurchaseDisplay(vendingMachine, money, logger);
+
                                 }
                                 else
                                 {
                                     // need to call vendingmachine.getitem(); x
                                     // need to update balance x
                                     vendingMachine.PurchaseItem(choiceInVM);
-                                    money.RemoveMoney((decimal)choiceInVM.Price);
+                                    money.RemoveMoney((decimal)choiceInVM.Price, money, logger, choiceInVM);
 
                                     Console.WriteLine($"\nDispensing {choiceInVM.Name}...");
                                     Console.WriteLine(choiceInVM.Sound);
                                     Console.ReadLine();
-                                    PurchaseDisplay(vendingMachine, money);
+                                    
+
+                                    PurchaseDisplay(vendingMachine, money, logger);
                                 }
                             }
                             else
                             {
-                                Console.WriteLine("Please select another item");
+                                Console.WriteLine("Please select another item.");
+                                Console.ReadLine();
                             }
                        }
 
@@ -96,10 +104,10 @@ namespace Capstone.VendingMachine
                         if (money.CurrentBalance > 0)
                         {
                             Console.WriteLine("Dispensing change...");
-                            money.MakeChange(money);
+                            money.MakeChange(money, logger);
                         }
                         Console.WriteLine("\nExiting to Main Menu");
-                        MainMenu.Display(vendingMachine, money);
+                        MainMenu.Display(vendingMachine, money, logger);
                     }
                     else
                     {

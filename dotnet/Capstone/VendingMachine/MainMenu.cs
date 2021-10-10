@@ -7,7 +7,7 @@ namespace Capstone.VendingMachine
     {
         //public VendingMachine vm;
         //public PurchaseMenu pm;
-        public static void Display(VendingMachine vendingMachine, Money money)
+        public static void Display(VendingMachine vendingMachine, Money money, Logger logger)
         {
 
             while (true)
@@ -29,17 +29,18 @@ namespace Capstone.VendingMachine
                 }
                 else if (input == "2")
                 {
-                    PurchaseMenu.PurchaseDisplay(vendingMachine, money);
+                    PurchaseMenu.PurchaseDisplay(vendingMachine, money, logger);
                 }
                 else if (input == "3")
                 {
                     Console.WriteLine("Thank you! Come back soon.");
+                    Logger.WriteLogToFile(logger.TotalSessionLog, logger);
                     System.Environment.Exit(1);
                 }
                 else if (input == "4")
                 {
                     // access sales report
-                    //Console.WriteLine("Thank you! Come back soon.");
+                    //Console.WriteLine("Accessing Sales Report.");
                     //break;
                 }
                 else

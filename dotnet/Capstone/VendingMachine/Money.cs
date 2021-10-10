@@ -8,7 +8,7 @@ namespace Capstone.VendingMachine
     {
         public decimal CurrentBalance { get; private set; } //= 0.00M;
 
-        public void MakeChange(Money money)
+        public void MakeChange(Money money, Logger logger)
         {
             decimal quarterValue = 0.25M;
             decimal dimeValue = 0.10M;
@@ -19,6 +19,8 @@ namespace Capstone.VendingMachine
             int numDimes = 0;
             int numNickels = 0;
             int numPennies = 0;
+
+            decimal moneyToLogBefore = money.CurrentBalance;
 
             decimal amountToBreak = money.CurrentBalance;
 
@@ -53,18 +55,19 @@ namespace Capstone.VendingMachine
             Console.WriteLine($"Remaining balance is: {amountToBreak}");
 
             money.CurrentBalance = 0.00M;
-
+            decimal moneyToLogAfter = money.CurrentBalance;
+                      
+            Logger.GenerateMakeChangeLogEntry(moneyToLogBefore, moneyToLogAfter, logger);
         }
 
-        public void FeedMoney(decimal inputBill)
+        public void FeedMoney(decimal inputBill, Money money, Logger logger)
         {
-            // only accepts $1, 2, 5, 10 bills
-            // get currentbalance
-            // set to currbal + inputbill
-
+            decimal moneyToLogBefore = money.CurrentBalance;
             CurrentBalance += inputBill;
-
-            }
+            decimal moneyToLogAfter = money.CurrentBalance;
+            
+            Logger.GenerateFeedMoneyLogEntry(moneyToLogBefore, moneyToLogAfter, logger);
+        }
         public bool PerformPriceCheck(decimal itemPrice)
         {
             //helper method - called to prevent "muddying up" other method bodies
@@ -82,11 +85,13 @@ namespace Capstone.VendingMachine
         }
         
     
-        public void RemoveMoney(decimal amountToRemove)
+        public void RemoveMoney(decimal amountToRemove, Money money, Logger logger, Product choiceInVM)
         {
+            decimal moneyToLogBefore = money.CurrentBalance;
+            CurrentBalance -= amountToRemove;
+            decimal moneyToLogAfter = money.CurrentBalance;
 
-            this.CurrentBalance -= amountToRemove;
-            
+            Logger.GeneratePurchaseLogEntry(moneyToLogBefore, moneyToLogAfter, logger, choiceInVM);
         }
     }
     

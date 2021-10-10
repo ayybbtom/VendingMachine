@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 
 
-// every variable name needs to be checked
-namespace Capstone
+namespace Capstone.VendingMachine
 {
     public class Logger
     {
@@ -12,71 +11,80 @@ namespace Capstone
         public Queue<string> TotalSessionLog { get; private set; } = new Queue<string>();
         public string SingleLogEntry { get; private set; }
 
-        public void WriteLogToFile(Queue<string> totalSessionLog)
+        public Logger(Queue<string> totalSessionLog)
+        {
+            TotalSessionLog = totalSessionLog;
+        }
+
+
+        public static void WriteLogToFile(Queue<string> totalSessionLog, Logger logger)
         {
             string fullPath = Path.Combine(@"C:\Users\Student\workspace\orange-mod1-capstone-team2\dotnet\", "log.txt");
 
-            DateTime date = DateTime.UtcNow;
-            string dateLong = date.ToString("G");
+            try
+            {
+                using (StreamWriter sw = new StreamWriter("Log.txt", true))
+                {
+                    foreach (string logLine in logger.TotalSessionLog)
+                    {
+                        sw.WriteLine(logLine);
+                    }
+                }
+                Console.WriteLine("successful logging attempt - poor trees!");
+            }
 
-            //string moneyBefore = moneyBefore.ToString("C");
-            //string moneyAfter = moneyAfter.ToString("C");
-            //string message = message;
-
-            //string writeLogLine = ($"{dateLong} {message} {moneyBefore} {moneyAfter} ");
-
-
-            //try
-            //{
-            //    using (StreamWriter sw = new StreamWriter(fullPath, true)
-            //    {
-            //        sw.WriteLine(writeLogLine);
-            //}
-            //}
-            //catch 
-            //{
-            //    Console.WriteLine("Logging eror");
-            //}
+            catch (IOException ex)
+            {
+                Console.WriteLine("Logging error");
+            }
         }
-            public void GenerateLogEntry()
+        public static void GenerateMakeChangeLogEntry(decimal moneyToLogBefore, decimal moneyToLogAfter, Logger logger)
         {
             //"01/01/2016 12:00:00 PM FEED MONEY: $5.00 $5.00"
             //string singleLogEntry = ($"{date} {datelong} {moneyBefore} {moneyAfter}");
             //string singleLogEntry = "";
+
+            string logEntry = $"{DateTime.UtcNow.ToString("MM/dd/yyyy hh:mm:ss tt")} GIVE CHANGE: ${moneyToLogBefore.ToString("0.00")} ${moneyToLogAfter.ToString("0.00")}";
+
+            logger.TotalSessionLog.Enqueue(logEntry);
+        }
+
+        public static void GeneratePurchaseLogEntry(decimal moneyToLogBefore, decimal moneyToLogAfter, Logger logger, Product choiceInVM)
+        {
+            string logEntry = $"{DateTime.UtcNow.ToString("MM/dd/yyyy hh:mm:ss tt")} {choiceInVM.Name} {choiceInVM.SlotLocation} ${moneyToLogBefore.ToString("0.00")} ${moneyToLogAfter.ToString("0.00")}";
+
+            logger.TotalSessionLog.Enqueue(logEntry);
+        }
+
+        public static void GenerateFeedMoneyLogEntry(decimal moneyToLogBefore, decimal moneyToLogAfter, Logger logger)
+        {
+            string logEntry = $"{DateTime.UtcNow.ToString("MM/dd/yyyy hh:mm:ss tt")} FEED MONEY: ${moneyToLogBefore.ToString("0.00")} ${moneyToLogAfter.ToString("0.00")}";
+
+            logger.TotalSessionLog.Enqueue(logEntry);
+        }
+
+        public void WriteLogToFile()
+        {
+            //write entire log array into a file at designated output directory 
+            try
+            {
+                using (StreamWriter sw = new StreamWriter("Log.txt", true))
+                {
+                    foreach (string logLine in TotalSessionLog)
+                    {
+                        sw.WriteLine(logLine);
+                    }
+                }
+            }
+            catch (IOException l)
+            {
+                Console.WriteLine(l.ToString());
+            }
         }
     }
 }
+        
 
 
 
-//moneyBefore
-//moneyAfter
-//item
-//TotalSessionLog = totalSessionLog;
-
-
-//        }
-//}
-//}
-
-
-//    FileHandler.LogWriter(TotalSessionLog);
-// generate singleLogEntry given parameters on Balance from call in Vending Machine
-// Write generated single line log entry into log array TotalSessionLog
-// return TotalSessionLog to FileHandler method WriteLogFile(input)
-//public void WriteLogToFile()
-//{
-//    //write entire log array into a file at designated output directory 
-//    try
-//    {
-//        using (StreamWriter sw = new StreamWriter("Log.txt", true))
-//        {
-//            sw.WriteLine(//whole log array//);
-//        }
-//    }
-//    catch (IOException l)
-//    {
-//        Console.WriteLine(l.ToString());
-//    }
-//}
 
