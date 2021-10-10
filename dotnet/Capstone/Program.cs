@@ -10,14 +10,18 @@ namespace Capstone.VendingMachine
             //SalesReport.WriteCheckSalesReport();
             Console.WriteLine("Hello World!");
             VendingMachine vendingMachine = new VendingMachine();
+
+
             vendingMachine.StockVendingMachine(vendingMachine);
 
-            foreach(KeyValuePair<Product, int> inventory in vendingMachine.Inventory)
+            MainMenu.Display();
+
+
+            foreach (KeyValuePair<Product, int> inventory in vendingMachine.Inventory)
             {
                 Console.WriteLine($"Item: {inventory.Key.Name} with count: {inventory.Value}");
                 Console.WriteLine($"Item is located in {inventory.Key.SlotLocation} and costs: {inventory.Key.Price}");
             }
-
 
             //FileHandler fileHandler = new FileHandler();
             //Queue<string> files = fileHandler.FileReader();

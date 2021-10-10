@@ -9,6 +9,7 @@ namespace Capstone.VendingMachine
         //public PurchaseMenu pm;
         public static void Display()
         {
+
             while (true)
             {
                 Console.WriteLine("Please select an option: ");
@@ -20,25 +21,24 @@ namespace Capstone.VendingMachine
                 Console.WriteLine("Please select an option");
                 string input = (Console.ReadLine());
 
-                //if (input == "1")
-                //{
-                //    Console.WriteLine("Vending machine stock displayed below. Hit Enter to return to the main menu.");
-                //    vm.DisplayAllInventory();
-                //    Console.WriteLine();
-                //}
-                //else if(input == "2")
-                //{
-                //    pm.PurchaseDisplay();
-
-                //}
-                //else if(input == "3")
-                //{
-                //    Console.WriteLine("Thank you! Come back soon.");
-                //}
-                //else
-                //{
-                //    Console.WriteLine("Please enter a valid option.");
-                //}
+                if (input == "1")
+                {
+                    Console.WriteLine("Vending machine stock displayed below. Hit Enter to return to the main menu.");
+                    Console.WriteLine();
+                }
+                else if (input == "2")
+                {
+                    //PurchaseMenu.PurchaseDisplay();
+                    Console.WriteLine("test purchasemenu");
+                }
+                else if (input == "3")
+                {
+                    Console.WriteLine("Thank you! Come back soon.");
+                }
+                else
+                {
+                    Console.WriteLine("Please enter a valid option.");
+                }
             }
         }
     }

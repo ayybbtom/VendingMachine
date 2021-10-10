@@ -2,11 +2,9 @@
 
 namespace Capstone.VendingMachine
 {
-    public class PurchaseMenu
+    public static class PurchaseMenu
     {
-        public Money money;
-        public VendingMachine vm;
-        public void PurchaseDisplay()
+        public static void PurchaseDisplay()
         {
             // idea: substitute "true" for sentinel variable
             // flip when option 4 is chosen (from true -> false)
@@ -14,7 +12,7 @@ namespace Capstone.VendingMachine
             {
                 Console.Clear();
                 Console.WriteLine("Please select an option: ");
-                Console.WriteLine($"{money.CurrentBalance.ToString("C")} + Current Money Provided");
+                Console.WriteLine($"{Money.CurrentBalance.ToString("C")} + Current Money Provided");
                 Console.WriteLine("(1) Feed Money");
                 Console.WriteLine("(2) Select Product");
                 Console.WriteLine("(3) Finish Transaction");

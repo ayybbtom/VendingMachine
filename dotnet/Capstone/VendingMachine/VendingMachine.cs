@@ -39,7 +39,7 @@ namespace Capstone.VendingMachine
             //}
             // also sets balance to 0 here
 
-
+           
         }
         public void RunVendingMachine()
         {
