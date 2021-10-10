@@ -14,7 +14,7 @@ namespace Capstone.VendingMachine
         #endregion
 
         #region Constructors
-        public VendingMachine()
+        public VendingMachine(Money money)
         {
         }
 
@@ -28,22 +28,14 @@ namespace Capstone.VendingMachine
             // Instantiates vending machine & money
 
             FileHandler.StockVendingMachineInventory(vendingMachine);
-            Money money = new Money();
+            
 
             Console.WriteLine("Vending machine is stocked! Woo.");
-
-            //foreach (KeyValuePair<Product, int> answers in vendingMachine.Inventory)
-            //{
-            //    Console.WriteLine(answers.Value);
-
-            //}
-            // also sets balance to 0 here
-
            
         }
-        public void RunVendingMachine()
+        public void RunVendingMachine(VendingMachine vendingMachine, Money money)
         {
-            MainMenu.Display();
+            MainMenu.Display(vendingMachine, money);
             //VendingMachine.PurchaseStuff();
         }
         //display vending: item #, stock, name, price
@@ -66,21 +58,6 @@ namespace Capstone.VendingMachine
                 }
             }
         }
-        //trying to get this to work below for this to be true to use in SubMenu option 2.
-
-        //string 'Q4' input x
-        //check it against vendingMachine.Inventory.keys().
-        //foreach vendingMachine.Inventory.Keys()
-        //    {
-        //    if (Key.slotLocation == string input)
-        //        {
-        //        if true, item does exist
-        //          once truth is determined, go to
-        //          vendingMachine.Inventory[key] = value*
-        //          we want this value*, this will be amt 
-        //          of item that is in stock in the machine
-        //          
-        //
 
         public Product GetVendingItem(string itemNumber)
         {
@@ -106,14 +83,19 @@ namespace Capstone.VendingMachine
                     return true;
                 }
             }
-
             return false;
-
         }
 
         // this GetItem will first check if: item exists, money is >= machine current money, and if itemStock > 0
         // call money.methods here: current blanace, balance after
         // call log to write transaction
+
+        // TO DO
+        // handle the inventory change (eg -1 when you buy an item)
+        // handle money balance change (Money.RemoveMoney)
+       
+
+
         //    public bool GetItem(string itemNumber)
         //    {
         //        if (this.IfItemExists(itemNumber) 

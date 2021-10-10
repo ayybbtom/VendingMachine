@@ -7,7 +7,7 @@ namespace Capstone.VendingMachine
     {
         //public VendingMachine vm;
         //public PurchaseMenu pm;
-        public static void Display()
+        public static void Display(VendingMachine vendingMachine, Money money)
         {
 
             while (true)
@@ -24,16 +24,17 @@ namespace Capstone.VendingMachine
                 if (input == "1")
                 {
                     Console.WriteLine("Vending machine stock displayed below. Hit Enter to return to the main menu.");
+                    vendingMachine.DisplayAllInventory();
                     Console.WriteLine();
                 }
                 else if (input == "2")
                 {
-                    //PurchaseMenu.PurchaseDisplay();
-                    Console.WriteLine("test purchasemenu");
+                    PurchaseMenu.PurchaseDisplay(vendingMachine, money);
                 }
                 else if (input == "3")
                 {
                     Console.WriteLine("Thank you! Come back soon.");
+                    break;
                 }
                 else
                 {
