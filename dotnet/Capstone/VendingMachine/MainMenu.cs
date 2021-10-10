@@ -34,7 +34,13 @@ namespace Capstone.VendingMachine
                 else if (input == "3")
                 {
                     Console.WriteLine("Thank you! Come back soon.");
-                    break;
+                    System.Environment.Exit(1);
+                }
+                else if (input == "4")
+                {
+                    // access sales report
+                    //Console.WriteLine("Thank you! Come back soon.");
+                    //break;
                 }
                 else
                 {

@@ -28,10 +28,10 @@ namespace Capstone.VendingMachine
             // Instantiates vending machine & money
 
             FileHandler.StockVendingMachineInventory(vendingMachine);
-            
+
 
             Console.WriteLine("Vending machine is stocked! Woo.");
-           
+
         }
         public void RunVendingMachine(VendingMachine vendingMachine, Money money)
         {
@@ -92,32 +92,22 @@ namespace Capstone.VendingMachine
 
         // TO DO
         // handle the inventory change (eg -1 when you buy an item)
-        // handle money balance change (Money.RemoveMoney)
-       
+
+        public void PurchaseItem(Product choiceInVM)
+        {
+            //will only call after money.PerformPriceCheck - no need to check for funds here
+            //will only call after vm.IfItmeExists - no need to check if item exists
+            //will only call after item qty > 0 is checked - no need for that, either
+            //money withdraw is handled separately, in money.RemoveMoney
+
+            Inventory[choiceInVM] -= 1;
+
+            // TO DO  Logger.CreateLog(DateTime.UtcNow, message, moneyBefore, moneyAfter);
+            return;
 
 
-        //    public bool GetItem(string itemNumber)
-        //    {
-        //        if (this.IfItemExists(itemNumber) 
-        //            && Money.PerformPriceCheck(itemNumber) >= Inventory.ContainsKey[itemPrice]
-        //            && Inventory.ContainsValue > 0
-        //            && vendingMachine[itemNumber].GetItem()
-        //        {
-        //            string message = ($"{Inventory.ContainsKey[itemNumber].itemPrice}");
-        //            decimal moneyBefore = Money.PerformPriceCheck;
-
-        //            Money.RemoveMoney(vendingMachine[itemNumber].itemPrice);
-
-        //            decimal moneyAfter = Money.PerformPriceCheck;
-        //            Logger.MethodToLogHere(DateTime.UtcNow, message, moneyBefore, moneyAfter);
-
-        //            return true;
-        //        }
-        //        else
-        //        {
-        //            return false;
-        //        }
-        //    }
+        }
+    }
 
         //}   // if: item exists, AND money is >= itemPrice AND >0 itemstock 
         //   // stirng message = (log $"datetime, action = "Itemname slotLocation", BalanceBeforeTransacation, BalanceAfterTransaction)
@@ -137,6 +127,6 @@ namespace Capstone.VendingMachine
         //    {
         //    Console.WriteLine("Sorry - you don't have enough money for that item.")
         //    }
-    }
+    //}
 }
 #endregion

@@ -9,11 +9,11 @@ namespace Capstone.VendingMachine
             // idea: substitute "true" for sentinel variable
             // flip when option 4 is chosen (from true -> false)
             Console.Clear();
-            
+
             while (true)
             {
                 
-                Console.WriteLine("\nPlease select an option: ");
+                Console.WriteLine("Please select an option: ");
                 Console.WriteLine($"{money.CurrentBalance.ToString("C")} + Current Money Provided");
                 Console.WriteLine("(1) Feed Money");
                 Console.WriteLine("(2) Select Product");
@@ -49,7 +49,7 @@ namespace Capstone.VendingMachine
                         {
                             vendingMachine.DisplayAllInventory();
                             Console.WriteLine();
-                            Console.WriteLine($"{money.CurrentBalance.ToString("C")}");
+                            Console.WriteLine($"Current Balance: {money.CurrentBalance.ToString("C")}");
                             Console.WriteLine("Please select an item: ");
 
                             string choiceAlphaNumeric = Console.ReadLine();
@@ -65,14 +65,19 @@ namespace Capstone.VendingMachine
                                 else if (!money.PerformPriceCheck(choiceInVM.Price))
                                 {
                                     Console.WriteLine($"Not enough Money for {choiceInVM.Name}.");
-                                    break;
+                                    Console.WriteLine("Please insert additional funds.\n");
+                                    PurchaseDisplay(vendingMachine, money);
                                 }
                                 else
-                                { 
-                                    // need to call vendingmachine.getitem();
-                                    // need to update balance
+                                {
+                                    // need to call vendingmachine.getitem(); x
+                                    // need to update balance x
+                                    vendingMachine.PurchaseItem(choiceInVM);
+                                    money.RemoveMoney((decimal)choiceInVM.Price);
+
                                     Console.WriteLine($"\nDispensing {choiceInVM.Name}...");
                                     Console.WriteLine(choiceInVM.Sound);
+                                    Console.ReadLine();
                                     PurchaseDisplay(vendingMachine, money);
                                 }
                             }
@@ -87,11 +92,14 @@ namespace Capstone.VendingMachine
                     else if (mainPurchaseMenuInput == "3")
                     {
                         // get it to run back to opening menu, with money set to 0 and inventory restocked
-                        Console.WriteLine("Transaction finished.");
-                        Console.WriteLine("Dispensing change...");
-                        money.MakeChange(money);
-                        Console.WriteLine("Exiting to Main Menu");
-                        isOperatingPurchaseDisplay = false;
+                        Console.WriteLine("\nTransaction finished.");
+                        if (money.CurrentBalance > 0)
+                        {
+                            Console.WriteLine("Dispensing change...");
+                            money.MakeChange(money);
+                        }
+                        Console.WriteLine("\nExiting to Main Menu");
+                        MainMenu.Display(vendingMachine, money);
                     }
                     else
                     {
