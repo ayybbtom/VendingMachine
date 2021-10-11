@@ -30,7 +30,6 @@ namespace Capstone.VendingMachine
                         sw.WriteLine(logLine);
                     }
                 }
-                Console.WriteLine("successful logging attempt - poor trees!");
             }
 
             catch (IOException ex)
@@ -65,7 +64,6 @@ namespace Capstone.VendingMachine
 
         public void WriteLogToFile()
         {
-            //write entire log array into a file at designated output directory 
             try
             {
                 using (StreamWriter sw = new StreamWriter("Log.txt", true))

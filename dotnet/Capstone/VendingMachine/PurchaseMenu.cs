@@ -12,7 +12,6 @@ namespace Capstone.VendingMachine
 
             while (true)
             {
-                
                 Console.WriteLine("Please select an option: ");
                 Console.WriteLine($"{money.CurrentBalance.ToString("C")} + Current Money Provided");
                 Console.WriteLine("(1) Feed Money");
@@ -21,9 +20,6 @@ namespace Capstone.VendingMachine
 
                 string mainPurchaseMenuInput = Console.ReadLine();
                 bool isOperatingPurchaseDisplay = true;
-
-                // need to handle bad inputs here
-
 
                 while (isOperatingPurchaseDisplay)
                 {
@@ -42,7 +38,7 @@ namespace Capstone.VendingMachine
                         {
                             Console.WriteLine("Please enter a whole dollar amount.\n");
                         }
-                        //break;
+                        
                     }
 
                     else if (mainPurchaseMenuInput == "2")
@@ -75,8 +71,6 @@ namespace Capstone.VendingMachine
                                 }
                                 else
                                 {
-                                    // need to call vendingmachine.getitem(); x
-                                    // need to update balance x
                                     vendingMachine.PurchaseItem(choiceInVM);
                                     money.RemoveMoney((decimal)choiceInVM.Price, money, logger, choiceInVM);
 
@@ -99,7 +93,6 @@ namespace Capstone.VendingMachine
 
                     else if (mainPurchaseMenuInput == "3")
                     {
-                        // get it to run back to opening menu, with money set to 0 and inventory restocked
                         Console.WriteLine("\nTransaction finished.");
                         if (money.CurrentBalance > 0)
                         {

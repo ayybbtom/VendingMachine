@@ -6,7 +6,7 @@ namespace Capstone.VendingMachine
 {
     public class Money
     {
-        public decimal CurrentBalance { get; private set; } //= 0.00M;
+        public decimal CurrentBalance { get; private set; }
 
         public void MakeChange(Money money, Logger logger)
         {

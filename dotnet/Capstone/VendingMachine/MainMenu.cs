@@ -5,8 +5,7 @@ namespace Capstone.VendingMachine
 {
     public static class MainMenu
     {
-        //public VendingMachine vm;
-        //public PurchaseMenu pm;
+
         public static void Display(VendingMachine vendingMachine, Money money, Logger logger)
         {
 
@@ -15,7 +14,7 @@ namespace Capstone.VendingMachine
                 Console.WriteLine("Please select an option: ");
                 Console.WriteLine();
                 Console.WriteLine("(1) Display Vending Machine Items");
-                Console.WriteLine("(2) Purchase"); //display submenu
+                Console.WriteLine("(2) Purchase"); 
                 Console.WriteLine("(3) Exit");
                 Console.WriteLine();
                 Console.WriteLine("Please select an option");
@@ -39,9 +38,19 @@ namespace Capstone.VendingMachine
                 }
                 else if (input == "4")
                 {
-                    // access sales report
-                    //Console.WriteLine("Accessing Sales Report.");
-                    //break;
+                    // Functionality not fully implemented.
+                    // Initial report generates, and flow works properly when preexisting report is accessed
+                    // Missing feature: add current vendingMachine sales info & total sales $ amt to current version of report
+                    
+                    // NOTE: SalesReport incorporates vestigal code from pre-vendingMachine.Inventory code
+                    // This is why items are accessed from stream read/writes
+                    
+                    // Goal: Implement FileHandler into SalesReport class, so only one class handles all streams
+                    // Addtl Goal: Merge preexisting salesreport with current vendingMachine inventory info, per above.
+
+                    Console.WriteLine("Accessing Sales Report.");
+                    SalesReport.WriteCheckSalesReport(SalesReport.GenerateSalesReport(vendingMachine, money));
+                    Console.WriteLine("Sales Report generated.");
                 }
                 else
                 {

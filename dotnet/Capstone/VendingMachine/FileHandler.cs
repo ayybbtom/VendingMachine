@@ -75,35 +75,6 @@ namespace Capstone.VendingMachine
                 }
             }
         }
-
-        public static void LogWriter(Queue<string> totalSessionLog)
-        {
-            // use this method to format log files - might be able to completely get rid of FileWriter method and replace it w/ LogWriter & SalesReportWriter
-            //foreach (string log in TotalSessionLog)
-            //{
-            //no need dequeue method - foreach handles "unloading of logs" from TotalSessionLog
-            //try
-            //    {
-            //        using (StreamWriter sw = new StreamWriter("Log.txt", true))
-            //        {
-            //            sw.WriteLine(//whole log array//);
-            //        }
-            //    }
-            //    catch (IOException l)
-            //    {
-            //        Console.WriteLine(l.ToString());
-            //    }
-        }
     }
-    //public static void SalesReportWriter()
-    //{
-    // use this method to format sales report files - might be able to completely get rid of FileWriter method and replace it w/ LogWriter & SalesReportWriter
-    //}
-
-
-
-
-
-
-
 }
+
